@@ -65,6 +65,7 @@ var listener = function () {
         myController.blockDblClicked(event)
       })
       gridListener.addEventListener('contextmenu', function(event){
+        event.preventDefault();
         myController.blockRightClicked(event)
       },false)
       playAgain.addEventListener('click', function(){
@@ -188,6 +189,8 @@ var controller = function () {
       myListner.initialise(this);
       myGrid.initialise(this);
       myMinePlacer.initialise(this);
+      score = 0;
+       myViewer.updateScore(score);
     },
 
     playGame : function() {
@@ -229,6 +232,7 @@ var controller = function () {
        var col = Number(event.target.getAttribute('data-col'))
        myViewer.displaySymbol('Y', row, col, 'green');
        myViewer.updateScore(score);
+
      }
    },
    playAgain : function() {
